@@ -17,7 +17,23 @@ const geocode = (address, callback) => {
             callback('Não deu para conectar aos serviços! Verifique a conexcão da internet.', undefined);
         } else if(response.body.features.length === 0){
             callback('O lugar que introduziu não existe. Por favor verifique novamente se o nome do lugar está bem introduzido!', undefined);
+        } else {
+            for(let i = 0; i < response.body.features.length; i++){
+                const latitude = response.body.features[i].center[0];
+                const longitude = response.body.features[i].center[1];
+                const place_name = response.body.features[i].place_name;
+                callback(undefined, {
+                    latitude: latitude,
+                    longitude: longitude,
+                    place_name: place_name
+                })
+            }
         }
     })
 
 }
+
+geocode('porto', (error, data) => {
+    console.log('Error: ', error);
+    console.log('Data: ', data);
+})
