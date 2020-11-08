@@ -9,15 +9,24 @@ const location = process.argv[2];
 if(!location){
     console.log('Please provide an location as argument');
 }
-// Callback function
-geocode(location, (error, data) => {
-    if(error){
-        return console.log('Error: ', error);
-    }
+else {
 
-    forecast(data.latitude, data.longitude, (error, forecast_data) => {
-        //console.log('Data: ', data);
-        console.log(data.place_name);
-        console.log(forecast_data);
+
+    // Callback function
+    geocode(location, (error, data) => {
+        if(error){
+            // If there is an error
+            return console.log('Error: ', error);
+        }
+
+        // Get the latitude and longitude in geocode as parameters
+        forecast(data.latitude, data.longitude, (error, forecast_data) => {
+
+            // Shows the locaton and the weather infos
+            //console.log('Data: ', data);
+            console.log(data.place_name);
+            console.log(forecast_data);
+        })
     })
-})
+
+}

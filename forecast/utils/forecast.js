@@ -16,9 +16,12 @@ const forecast = (latitude, longitude, callback) => {
         // Verify if there is an error
         if(error){
             callback('Cant connect to the services!', undefined);
+
+            // If there is no properties
         } else if(response.body.length === 0){
             callback('No matches found! Double check the it.', undefined);
         } else {
+            // Get the temperature, pressure, humidity and weather main
             callback('undefined', {
                 //place_name: response.body.name,
                 temperature: response.body.main.temp,
