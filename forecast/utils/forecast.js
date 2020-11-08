@@ -20,7 +20,11 @@ const forecast = (latitude, longitude, callback) => {
             callback('No matches found! Double check the it.', undefined);
         } else {
             callback('undefined', {
-                place_name: response.body.name,
+                //place_name: response.body.name,
+                temperature: response.body.main.temp,
+                pressure: response.body.main.pressure,
+                humidity: response.body.main.humidity,
+                weather_main: response.body.weather[0].main,
             })
         }
     })
