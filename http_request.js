@@ -19,4 +19,8 @@ const request = http.request(url, (response) => {
     })
 })
 
+request.on('error', (error) => {
+    console.log('Error: ', error)
+})
+
 request.end();
