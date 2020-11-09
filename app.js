@@ -24,6 +24,12 @@ else {
 
             // Shows the locaton and the weather infos
             //console.log('Data: ', data);
+            
+            // Hnadle the error
+            if(error){
+                console.log('Error: ', error);
+            }
+            
             console.log(data.place_name);
             console.log(forecast_data);
         })
